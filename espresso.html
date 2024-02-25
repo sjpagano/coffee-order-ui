@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="index.html" id = "index">Coffee Order System</a>
+    <br />
+    <label id = "addCondoments">Add the condiments</label>
+    <button id="milk" onclick="add()">Milk</button>
+    <button id="mocha" onclick="add()">Mocha</button>
+    <button id="soy" onclick="add()">Soy</button>
+    <button id="whip" onclick="add()">Whip</button>
+    <label id = "myOrder">My Order</label>
+    <a href="order.html" id = "order">Selected Beverage</a>
+    <br />
+    <button id="milk2" onclick="remove()">Milk</button>
+    <button id="mocha2" onclick="remove()">Mocha</button>
+    <button id="soy2" onclick="remove()">Soy</button>
+    <button id="whip2" onclick="remove()">Whip</button>
+    <button id="confirmOrder" onclick="finalOrder()">Confirm Order</button>
+    <label id="orderPlaced">Order Placed:</label>
+    <label id="orderId">Order id:</label>
+    <label id="actualOrder">Dark Roast</label>
+    <label id="total">Total:</label>
+</body>
+<script>
+    let order = ["Espresso"];
+    function add(obj) {
+        var action = 0;
+        var txt = event.target.textContent;
+        for (let item of order) {
+            if (txt == item) {
+                action = 1;
+            }
+        }
+        if (action == 0) {
+        order.push(txt);
+        console.log(order);
+        if (txt == "Milk") {
+            document.getElementById('milk2').style.visibility = 'visible';
+        }
+        if (txt == "Mocha") {
+            document.getElementById('mocha2').style.visibility = 'visible';
+        }
+        if (txt == "Soy") {
+            document.getElementById('soy2').style.visibility = 'visible';
+        }
+        if (txt == "Whip") {
+            document.getElementById('whip2').style.visibility = 'visible';
+        }
+        }
+    }
+    function remove(obj) {
+        event.target.style.visibility = 'hidden';
+        const index = order.indexOf(event.target.textContent);
+        order.splice(index, 1);
+    }
+    function finalOrder() {
+        document.getElementById('addCondoments').style.visibility = 'hidden';
+        document.getElementById('milk').style.visibility = 'hidden';
+        document.getElementById('mocha').style.visibility = 'hidden';
+        document.getElementById('soy').style.visibility = 'hidden';
+        document.getElementById('whip').style.visibility = 'hidden';
+        document.getElementById('myOrder').style.visibility = 'hidden';
+        document.getElementById('order').style.visibility = 'hidden';
+        document.getElementById('milk2').style.visibility = 'hidden';
+        document.getElementById('mocha2').style.visibility = 'hidden';
+        document.getElementById('soy2').style.visibility = 'hidden';
+        document.getElementById('whip2').style.visibility = 'hidden';
+        document.getElementById('confirmOrder').style.visibility = 'hidden';
+        const orderPlaced = document.getElementById('orderPlaced');
+        const orderId = document.getElementById('orderId');
+        const actualOrder = document.getElementById('actualOrder');
+        const total = document.getElementById('total');
+        orderPlaced.style.visibility = 'visible';
+        orderId.style.visibility = 'visible';
+        actualOrder.style.visibility = 'visible';
+        total.style.visibility = 'visible';
+        orderPlaced.innerText = "Order Placed:";
+        orderId.innerText = "Order id: " + Math.floor(Math.random() * 10);;
+        actualOrder.innerText = order.toString();
+        total.innerText = "Total: $" + Math.floor(Math.random() * 10);;
+    }
+</script>
+<style>
+    #addCondoments {
+        left: 800px;
+        top: 300px;
+        font-size: 20px;
+        position: absolute;
+        color:black;
+    }
+    #milk {
+        left: 600px;
+        top: 350px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        background: #eed255;
+        padding: 40px;
+        width: 100px;
+        height: 40px;
+    }
+    #milk:focus {
+        background:#9e871e
+    }
+    #mocha {
+        left: 1000px;
+        top: 350px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        background: #eed255;
+        padding: 40px;
+        width: 100px;
+        height: 40px;
+    }
+    #mocha:focus {
+        background:#9e871e
+    }
+    #soy {
+        left: 600px;
+        top: 500px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        background: #eed255;
+        padding: 40px;
+        width: 100px;
+        height: 40px;
+    }
+    #soy:focus {
+        background:#9e871e
+    }
+    #whip {
+        left: 1000px;
+        top: 500px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        background: #eed255;
+        padding: 40px;
+        width: 100px;
+        height: 40px;
+    }
+    #whip:focus {
+        background:#9e871e
+    }
+    #myOrder {
+        right: 20px;
+        top: 125px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        border: 2px solid #eed255;
+        padding: 40px;
+        width: 130px;
+        height: 300px;
+    }
+    #order {
+        right: 30px;
+        top: 200px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        background: #eed255;
+        padding: 10px;
+        width: 180px;
+        height: 30px;
+    }
+    #milk2 {
+        right: 80px;
+        top: 250px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        background: #eed255;
+        padding: 10px;
+        width: 80px;
+        height: 35px;
+        visibility: hidden;
+    }
+    #mocha2 {
+        right: 80px;
+        top: 300px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        background: #eed255;
+        padding: 10px;
+        width: 80px;
+        height: 35px;
+        visibility: hidden;
+    }
+    #soy2 {
+        right: 80px;
+        top: 350px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        background: #eed255;
+        padding: 10px;
+        width: 80px;
+        height: 35px;
+        visibility: hidden;
+    }
+    #whip2 {
+        right: 80px;
+        top: 400px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        background: #eed255;
+        padding: 10px;
+        width: 80px;
+        height: 35px;
+        visibility: hidden;
+    }
+    #confirmOrder {
+        right: 40px;
+        top: 450px;
+        font-size: 20px;
+        position: absolute;
+        color:darkslategray;
+        border-radius: 30px / 20px;
+        background: #eed255;
+        padding: 10px;
+        width: 180px;
+        height: 35px;
+    }
+    #orderPlaced {
+        left: 750px;
+        top: 300px;
+        font-size: 30px;
+        position: absolute;
+        color:black;
+        visibility: hidden;
+    }
+    #orderId {
+        left: 750px;
+        top: 350px;
+        font-size: 30px;
+        position: absolute;
+        color:black;
+        visibility: hidden;
+    }
+    #actualOrder {
+        left: 750px;
+        top: 400px;
+        font-size: 30px;
+        position: absolute;
+        color:black;
+        visibility: hidden;
+    }
+    #total {
+        left: 750px;
+        top: 450px;
+        font-size: 30px;
+        position: absolute;
+        color:black;
+        visibility: hidden;
+    }
+    #index {
+        left: 50px;
+        top: 30px;
+        font-size: 35px;
+        position: absolute;
+        color:darkorange;
+    }
+    body {
+        background-color: khaki;
+    }
+</style>

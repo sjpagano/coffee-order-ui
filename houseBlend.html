@@ -59,7 +59,7 @@
         order.splice(index, 1);
     }
     async function finalOrder() {
-        let host = "http://localhost:8080/orders";
+        let host = "https://coffee-order-latest-wk7r.onrender.com";
         const response = await fetch(host, {
             method: 'POST',
             headers: {

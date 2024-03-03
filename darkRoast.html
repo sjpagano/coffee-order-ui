@@ -58,7 +58,22 @@
         const index = order.indexOf(event.target.textContent);
         order.splice(index, 1);
     }
-    function finalOrder() {
+    async function finalOrder() {
+        let host = "http://localhost:8080/orders";
+        const response = await fetch(host, {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            body: {
+            "beverage": "Dark Roast",
+            "condiments": order
+        }
+        });
+        response.json().then(data => {
+            console.log(JSON.stringify(data))
+        })
         document.getElementById('addCondoments').style.visibility = 'hidden';
         document.getElementById('milk').style.visibility = 'hidden';
         document.getElementById('mocha').style.visibility = 'hidden';
